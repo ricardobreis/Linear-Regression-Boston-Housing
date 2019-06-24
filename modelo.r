@@ -2,6 +2,9 @@ install.packages('mlbench')
 install.packages('car')
 library(mlbench)
 library(car)
+library(caTools)
+library(dplyr)
+library(plotly)
 
 # crim - per capita crime rate by town
 # zn - proportion of residential land zoned for lots over 25,000 sq.ft
@@ -24,7 +27,7 @@ str(housing)
 
 summary(housing)
 
-#Montando o modelo com todas as vari?veis
+#Montando o modelo com todas as variaveis
 
 model1 <- lm(medv ~ crim + zn + indus + chas + nox + rm + age + dis + rad + tax + ptratio + b
             + lstat, data = housing)
@@ -65,21 +68,20 @@ summary(model6)
 model7 <- lm(medv ~ crim + nox + rm + dis + tax + lstat, data = housing)
 summary(model7)
 
+#Separando o dataset em treino e teste
+
 set.seed(123)
 
-#Split the data , `split()` assigns a booleans to a new column based on the SplitRatio specified. 
-
 split <- sample.split(housing,SplitRatio =0.75)
-
 
 train <- subset(housing,split==TRUE)
 test <- subset(housing,split==FALSE)
 
-model <- lm(medv ~ crim + nox + rm + dis + tax + lstat, data = train)
-summary(model)
-sqrt(sum(residuals(model)^2) / df.residual(model))
-plot(model)
-test$predicted.medv <- predict(model,test)
+#Treinando
+modelTrain <- lm(medv ~ crim + nox + rm + dis + tax + lstat, data = train)
+summary(modelTrain)
+
+test$predicted.medv <- predict(modelTrain,test)
 
 pl1 <-test %>% 
   ggplot(aes(medv,predicted.medv)) +
@@ -92,4 +94,4 @@ pl1 <-test %>%
 ggplotly(pl1)
 
 error <- test$predicted.medv-test$medv
-rmse <- sqrt(sum(error^2)/res$df)
+rmse <- sqrt(sum((error)^2)/length(test$medv))
