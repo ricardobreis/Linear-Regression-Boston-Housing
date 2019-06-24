@@ -74,6 +74,7 @@ set.seed(123)
 
 split <- sample.split(housing,SplitRatio =0.75)
 
+
 train <- subset(housing,split==TRUE)
 test <- subset(housing,split==FALSE)
 
@@ -83,15 +84,13 @@ summary(modelTrain)
 
 test$predicted.medv <- predict(modelTrain,test)
 
-pl1 <-test %>% 
+grafico <- test %>% 
   ggplot(aes(medv,predicted.medv)) +
-  geom_point(alpha=0.5) + 
-  stat_smooth(aes(colour='black')) +
-  xlab('Actual value of medv') +
-  ylab('Predicted value of medv')+
-  theme_bw()
+  geom_point(alpha=0.5) +
+  xlab('MEDV Atual') +
+  ylab('MEDV Previsto')
 
-ggplotly(pl1)
+ggplotly(grafico)
 
 error <- test$predicted.medv-test$medv
 rmse <- sqrt(sum((error)^2)/length(test$medv))
