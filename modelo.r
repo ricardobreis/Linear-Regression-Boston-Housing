@@ -85,7 +85,7 @@ summary(model6)
 model7 <- lm(medv ~ crim + nox + rm + dis + tax + lstat, data = trainData)
 summary(model7)
 
-#Retirando ptratio
+#Retirando crim
 model8 <- lm(medv ~ nox + rm + dis + tax + lstat, data = trainData)
 summary(model8)
 
