@@ -1,8 +1,9 @@
 ################################################################################################
 #
 # Regressão Linear - Looqbox MeetUp
+# Por: Ricardo Reis
 #
-# CASE - BOSTON HOUSING
+# CASO - BOSTON HOUSING
 #
 # crim - per capita crime rate by town
 # zn - proportion of residential land zoned for lots over 25,000 sq.ft
@@ -28,6 +29,7 @@ library(car)
 library(caTools)
 library(dplyr)
 library(plotly)
+library(caret)
 
 data(BostonHousing)
 housing <- BostonHousing
@@ -39,19 +41,19 @@ cor(housing[-1],housing$medv)
 #Separando o dataset em treino e teste
 set.seed(123)
 
-split <- sample.split(housing,SplitRatio =0.75)
-trainData <- subset(housing,split==TRUE)
-testData <- subset(housing,split==FALSE)
+index <- createDataPartition(housing$medv, p = 0.7, list = F)
+trainData <- housing[index,]
+testData <- housing[-index,]
 
 #Montando o modelo com todas as variaveis
 model1 <- lm(medv ~ crim + zn + indus + chas + nox + rm + age + dis + rad + tax + ptratio + b
-            + lstat, data = trainData)
+             + lstat, data = trainData)
 vif(model1)
 summary(model1)
 
 #Retirando rad
 model2 <- lm(medv ~ crim + zn + indus + chas + nox + rm + age + dis + tax + ptratio + b
-            + lstat, data = trainData)
+             + lstat, data = trainData)
 vif(model2)
 summary(model2)
 
@@ -76,15 +78,19 @@ model6 <- lm(medv ~ crim + zn  + nox + rm + dis + tax + ptratio
 summary(model6)
 
 #Retirando zn
-model6 <- lm(medv ~ crim + nox + rm + dis + tax + lstat, data = trainData)
+model6 <- lm(medv ~ crim + nox + rm + dis + tax + lstat + ptratio, data = trainData)
 summary(model6)
 
 #Retirando ptratio
 model7 <- lm(medv ~ crim + nox + rm + dis + tax + lstat, data = trainData)
 summary(model7)
 
+#Retirando ptratio
+model8 <- lm(medv ~ nox + rm + dis + tax + lstat, data = trainData)
+summary(model8)
+
 #Treinando
-modelTrain <- lm(medv ~ crim + nox + rm + dis + tax + lstat, data = trainData)
+modelTrain <- lm(medv ~ nox + rm + dis + tax + lstat, data = trainData)
 summary(modelTrain)
 
 testData$predicted.medv <- predict(modelTrain,testData)
