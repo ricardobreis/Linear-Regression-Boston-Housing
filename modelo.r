@@ -36,7 +36,6 @@ housing <- BostonHousing
 str(housing)
 
 summary(housing)
-cor(housing[-1],housing$medv)
 
 #Separando o dataset em treino e teste
 set.seed(123)
@@ -89,8 +88,12 @@ summary(model7)
 model8 <- lm(medv ~ nox + rm + dis + tax + lstat, data = trainData)
 summary(model8)
 
+#Retirando nox
+model8 <- lm(medv ~ rm + dis + tax + lstat, data = trainData)
+summary(model8)
+
 #Treinando
-modelTrain <- lm(medv ~ nox + rm + dis + tax + lstat, data = trainData)
+modelTrain <- lm(medv ~ rm + dis + tax + lstat, data = trainData)
 summary(modelTrain)
 
 testData$predicted.medv <- predict(modelTrain,testData)
