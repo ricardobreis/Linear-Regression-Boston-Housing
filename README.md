@@ -1,4 +1,3 @@
 # Linear-Regression-Boston-Housing
 
-O projeto consiste em criar um modelo, utilizandoo regressão linear, que possa prever o valor de casas do dataset Boston housing que pode ser encontrado no Kaggle.
-O projeto foi apresentado como um estudo de caso de regressão linear no Looqbox MeetUp.
+The project consists in creating a model using linear regression to predict prices of houses of the Boston Housing dataset which can be found in Kaggle. The project was presented as a linear regression case study at Looqbox MeetUp.
