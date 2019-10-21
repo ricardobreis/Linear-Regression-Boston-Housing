@@ -17,3 +17,6 @@ The project consists in creating a model using linear regression to predict pric
 - B: 1000(B - 0.63)^2, where B is the proportion of blacks by town
 - Lstat: percentage of lower status of the population
 - Medv: median value of owner-occupied homes in USD 1000's
+
+# Boston Housing Dataset
+https://www.rdocumentation.org/packages/mlbench/versions/2.1-1/topics/BostonHousing
