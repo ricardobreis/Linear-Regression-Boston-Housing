@@ -26,5 +26,8 @@ The project consists in creating a model using linear regression to predict pric
 ### Plotting Real Value X Forecast Value
 ![Plot - Real x Forecast](https://github.com/ricardobreis/Linear-Regression-Boston-Housing/blob/master/RealxPrevisa%CC%83o.png)
 
+### RMSE
+> 6.312745
+
 ## Boston Housing Dataset
 https://www.rdocumentation.org/packages/mlbench/versions/2.1-1/topics/BostonHousing
