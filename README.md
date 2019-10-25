@@ -18,5 +18,8 @@ The project consists in creating a model using linear regression to predict pric
 - Lstat: percentage of lower status of the population
 - Medv: median value of owner-occupied homes in USD 1000's
 
+# Final Model
+> y = -2,852845 + 6,110905.rm - 0,569839.dis - 0,011868.tax - 0,469279.lstat + e
+
 # Boston Housing Dataset
 https://www.rdocumentation.org/packages/mlbench/versions/2.1-1/topics/BostonHousing
