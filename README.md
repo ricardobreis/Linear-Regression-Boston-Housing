@@ -2,7 +2,7 @@
 
 The project consists in creating a model using linear regression to predict prices of houses of the Boston Housing dataset which can be found in Kaggle. The project was presented as a linear regression case study at Looqbox MeetUp.
 
-# Features
+## Features
 - Crim: per capita crime rate by town
 - Zn: proportion of residential land zoned for lots over 25,000 sq.ft
 - Indus: proportion of non-retail business acres per town
@@ -18,8 +18,13 @@ The project consists in creating a model using linear regression to predict pric
 - Lstat: percentage of lower status of the population
 - Medv: median value of owner-occupied homes in USD 1000's
 
-# Final Model
+## Linear Regression
+
+### Final Model
 > y = -2,852845 + 6,110905.rm - 0,569839.dis - 0,011868.tax - 0,469279.lstat + e
 
-# Boston Housing Dataset
+### Plotting Real Value X Forecast Value
+![Plot - Real x Forecast](https://github.com/ricardobreis/Linear-Regression-Boston-Housing/blob/master/RealxPrevisa%CC%83o.png)
+
+## Boston Housing Dataset
 https://www.rdocumentation.org/packages/mlbench/versions/2.1-1/topics/BostonHousing
