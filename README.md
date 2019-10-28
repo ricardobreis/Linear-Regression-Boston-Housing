@@ -23,6 +23,19 @@ The dataset is a set of 506 rows and 14 columns (13 independent variables and 1 
 
 ## Linear Regression
 
+### Checking Multicollinearity
+To check if exists multicollinearity in this dataset, I'm using the VIF (Variance Inflation Factor), which quantifies the severity of multicollinearity. According to Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani in "An Introduction to Statistical Learning": 
+
+> "As a rule of thumb, a VIF value that exceeds 5 or 10 indicates a problematic amount of collinearity."
+
+Checking the VIF values on the image below, we can see there is multicollinearity on "rad" and "tax" features.
+
+![VIF 1](https://github.com/ricardobreis/Linear-Regression-Boston-Housing/blob/master/vif-model1.png)
+
+Removing the "rad" variable and checking the VIF again we can see that there is no multicollinearity anymore.
+
+![VIF 2](https://github.com/ricardobreis/Linear-Regression-Boston-Housing/blob/master/vif-model2.png)
+
 ### Final Model
 > y = -2,852845 + 6,110905.rm - 0,569839.dis - 0,011868.tax - 0,469279.lstat + e
 
