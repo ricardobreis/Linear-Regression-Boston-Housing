@@ -37,13 +37,21 @@ Removing the "rad" variable and checking the VIF again we can see that there is 
 ![VIF 2](https://github.com/ricardobreis/Linear-Regression-Boston-Housing/blob/master/vif-model2.png)
 
 ### Final Model
+After removing "rad" and doing the linear regression again, we can check that some variables are not statistically significant (P-value > 5%), so these variables were removed one by one. 
+
+![Model 2](https://github.com/ricardobreis/Linear-Regression-Boston-Housing/blob/master/model2.png)
+
+After that, we've got this final model:
 > y = -2,852845 + 6,110905.rm - 0,569839.dis - 0,011868.tax - 0,469279.lstat + e
+
+with a rmse of:
+> 6.312745
+
+and a Adjusted R-squared of:
+> 70%
 
 ### Plotting Real Value X Forecast Value
 ![Plot - Real x Forecast](https://github.com/ricardobreis/Linear-Regression-Boston-Housing/blob/master/RealxPrevisa%CC%83o.png)
-
-### RMSE
-> 6.312745
 
 ## Boston Housing Dataset
 https://www.rdocumentation.org/packages/mlbench/versions/2.1-1/topics/BostonHousing
